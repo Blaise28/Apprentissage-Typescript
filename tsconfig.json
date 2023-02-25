@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist/",
+    "target": "Es2015",
+    "noEmitOnError": true,
+    "strict": true,
+  },
+  "files":[
+    "src/app.ts",
+  ],
+  "exclude": ["node_modules"]
+}
