@@ -1,42 +1,38 @@
 "use strict";
-const User = { firstname: "Blaise" };
-let date = "2023/02/13 4:20:3";
-let id = 2;
 /**
- * ca doit extends d'un objet qui contient une cle lenght qui serai de type number
- * @param arg TYpe
- * @returns Type
+ * vue que la methode reverse modifie le tableau original
+ * et si on veut qu'il soie en lecture seul :On utilise readOnly
+ * et si on veut que le retour soit en lecture seul: on utilise readonly
+ * @param arr T
+ * @returns T
  */
-function consoleSize(arg) {
-    console.log(arg.length);
-    return arg;
+function reverse(arr) {
+    //on cree un nouveau tableau puis utilise le renverse
+    return [...arr].reverse();
 }
-const ab = consoleSize(["asd", 1]);
-/**
- * on lui donne le type qu'on souhaite et celui qu'il va retourne
- * @param a ArgType
- * @returns ArgType
- */
-function Gcool(a) {
-    return a;
-}
-let cool = Gcool(3);
-let coll = Gcool("salut les gens");
-function first(a) {
-    return a[0];
-}
-let first_str = first(["azez", "sddsd", "glkd"]);
-let firstEl = first([0, true, "sddsd", "glkd"]);
-const compteur = document.querySelector("#compteur");
-let i = 0;
-const increment = (e) => {
-    i++;
-    const span = compteur === null || compteur === void 0 ? void 0 : compteur.querySelector("span");
-    if (span) {
-        span.textContent = i.toString();
+class User {
+    constructor(firstname) {
+        this.firstname = firstname;
     }
-};
-/**
- * ? veut dire n'utilise compteur que s'il existe
- */
-compteur === null || compteur === void 0 ? void 0 : compteur.addEventListener("click", increment);
+}
+class Collection {
+    constructor(items) {
+        this.items = items;
+    }
+    /**
+     * On peut retourne l'instance actuelle
+     */
+    add(item) {
+        this.items.push(item);
+        return this;
+    }
+    first() {
+        var _a;
+        return (_a = this.items[0]) !== null && _a !== void 0 ? _a : null;
+    }
+}
+const a = new Collection([
+    new User("bob"),
+    new User("John")
+]);
+console.log(a.first());
