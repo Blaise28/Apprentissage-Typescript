@@ -1,45 +1,32 @@
 "use strict";
-//La forme de cette fonction
-const cb = (e) => { };
-function printId(id) {
-    if (typeof id === "number") {
-        // il sera capable de detecter que id est de type number
-        console.log(id * 3);
-    }
-    else {
-        //et ici de type string
-        console.log(id.toUpperCase);
-    }
+const User = { firstname: "Blaise" };
+let date = "2023/02/13 4:20:3";
+let id = 2;
+/**
+ * ca doit extends d'un objet qui contient une cle lenght qui serai de type number
+ * @param arg TYpe
+ * @returns Type
+ */
+function consoleSize(arg) {
+    console.log(arg.length);
+    return arg;
 }
-function test(a, b) {
-    if (a === b) {
-        /**
-         * dans ce cas il sera capable de dire que a et b seront des string
-         * car ces dans ces deux cas possible
-         * */
-    }
+const ab = consoleSize(["asd", 1]);
+/**
+ * on lui donne le type qu'on souhaite et celui qu'il va retourne
+ * @param a ArgType
+ * @returns ArgType
+ */
+function Gcool(a) {
+    return a;
 }
-function exemple(a) {
-    if (isDate(a)) {
-        /**
-         * a sera de type Date
-         */
-        a;
-    }
-    if ("value" in a) {
-        /**
-         * a est de type HTMLInputElement car dans ces objets
-         * value existe dans HtmlInputElement
-         */
-    }
+let cool = Gcool(3);
+let coll = Gcool("salut les gens");
+function first(a) {
+    return a[0];
 }
-function isDate(a) {
-    /**
-     * vue qu'on sait precisement le type qu'il va retourne
-     * on peut dire que notre fonction retourne vrai si c'est un Date
-     */
-    return a instanceof Date;
-}
+let first_str = first(["azez", "sddsd", "glkd"]);
+let firstEl = first([0, true, "sddsd", "glkd"]);
 const compteur = document.querySelector("#compteur");
 let i = 0;
 const increment = (e) => {

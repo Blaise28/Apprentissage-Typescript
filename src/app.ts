@@ -1,48 +1,50 @@
-//La forme de cette fonction
-const cb: (e: Event) => void = (e: Event): void => {};
+type User = { firstname: string; lastname?: string };
+type DateString = string;
+type Id = string | number;
 
-function printId(id: number | string): void {
-  if (typeof id === "number") {
-    // il sera capable de detecter que id est de type number
-    console.log(id * 3);
-  } else {
-    //et ici de type string
-    console.log(id.toUpperCase);
-  }
-}
-function test(a: string | boolean, b: string | number) {
-  if (a === b) {
-    /**
-     * dans ce cas il sera capable de dire que a et b seront des string
-     * car ces dans ces deux cas possible
-     * */
-  }
-}
+//creation d'un type a partir des cles d'un autre
+type k = keyof User;
 
-function exemple(a: HTMLInputElement | MouseEvent | Date) {
-  if(isDate(a)){
-    /**
-     * a sera de type Date
-     */
-    a
-  }
-  if ("value" in a) {
-    /**
-     * a est de type HTMLInputElement car dans ces objets
-     * value existe dans HtmlInputElement
-     */
-  }
-}
+//un type qui herite d'un autre
+type Username = User["firstname"];
 
-function isDate(a: any): a is Date{
+//on peut creer des type generiques
+type Identity<ArgType> = (e: ArgType) => ArgType;
+
+const User: User = { firstname: "Blaise" };
+let date: DateString = "2023/02/13 4:20:3";
+let id: Id = 2;
+
 /**
- * vue qu'on sait precisement le type qu'il va retourne
- * on peut dire que notre fonction retourne vrai si c'est un Date
+ * ca doit extends d'un objet qui contient une cle lenght qui serai de type number
+ * @param arg TYpe
+ * @returns Type
  */
-  return a instanceof Date;
+function consoleSize<Type extends { length: number }>(arg: Type): Type {
+  console.log(arg.length);
+  return arg;
 }
 
-const compteur = document.querySelector("#compteur");
+const ab = consoleSize(["asd", 1]);
+
+/**
+ * on lui donne le type qu'on souhaite et celui qu'il va retourne
+ * @param a ArgType
+ * @returns ArgType
+ */
+function Gcool<ArgType>(a: ArgType): ArgType {
+  return a;
+}
+let cool: number = Gcool<number>(3);
+let coll: string = Gcool<string>("salut les gens");
+
+function first<Type>(a: Type[]): Type {
+  return a[0];
+}
+let first_str: string = first(["azez", "sddsd", "glkd"]);
+let firstEl = first([0, true, "sddsd", "glkd"]);
+
+const compteur = document.querySelector<HTMLButtonElement>("#compteur");
 let i = 0;
 
 const increment: (e: Event) => void = (e: Event) => {
