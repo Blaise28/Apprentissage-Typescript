@@ -1,19 +1,49 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Pointer = void 0;
-class Pointer {
+// type AnimalOptions = { nager: any } | { sauter: any };
+// type AnimalFromOptions<T> = T extends { nager: any } ? Poisson : Chat;
+// class Poisson {}
+// class Chat {}
+// function generator<T extends AnimalOptions>(options: T): AnimalFromOptions<T> {
+//   if ("nager" in options) {
+//     return new Poisson();
+//   } else {
+//     return new Chat();
+//   }
+// }
+// const a = generator({ nager: "Je nage" });
+// //Utilise la valeur de retour d'une fonction comme type de retour
+// /**
+//  * notre generique T  sera un object qui contient une methode cri
+//  * Et la valeur de retour on la transforme en Generique
+//  * Puis le retourne
+//  */
+// type AnimalCri<T> = T extends { cri: () => infer U } ? U : never;
+// class Chien {
+//   cri() {
+//     return "woauuu";
+//   }
+// }
+// class Panda {
+//   cri() {
+//     return false;
+//   }
+// }
+// /**
+//  * il va detecter le retour
+//  */
+// type A = AnimalCri<Chien>;
+// type B = AnimalCri<Panda>;
+class FeatureFlags {
     constructor() {
-        this.x = 0;
-        this.y = 0;
+        this.env = "hello";
     }
-    move(x, y) {
-        this.x += x;
-        this.y += y;
+    darkMode() {
+        return false;
+    }
+    privateMode() {
+        return true;
+    }
+    nsfMode() {
+        return false;
     }
 }
-exports.Pointer = Pointer;
-const scroll_to_1 = require("scroll-to");
-(0, scroll_to_1.default)(500, 1200, {
-    ease: 'out-bounce',
-    duration: 1500
-});
