@@ -7,10 +7,13 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "declaration": true,
-    // "moduleResolution": "node",
+    "moduleResolution": "node",
   },
   "files":[
     "src/app.ts",
+  ],
+  "include":[
+    "Types/**/*",
   ],
   "exclude": ["node_modules"]
 }

@@ -12,3 +12,8 @@ class Pointer {
     }
 }
 exports.Pointer = Pointer;
+const scroll_to_1 = require("scroll-to");
+(0, scroll_to_1.default)(500, 1200, {
+    ease: 'out-bounce',
+    duration: 1500
+});
